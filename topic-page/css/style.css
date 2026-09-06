@@ -99,7 +99,8 @@ body {
 }
 
 .number {
-  position: absolute;     top: 12px;
+  position: absolute;   
+  top: 12px;
   right: 14px;
   font-size: 22px;
   font-weight: 700;
@@ -128,9 +129,13 @@ body {
   margin: 12px 0 0;
 }
 
+@media (min-width: 992px) {
+  .player-card { padding: 24px; }
+}
+
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);   
+  grid-template-columns: repeat(2, 1fr);   /* 手机优先：两列 */
   gap: 16px;
 }
 
@@ -154,7 +159,7 @@ body {
 
 .legend-grid {
   display: grid;
-  grid-template-columns: 1fr;              
+  grid-template-columns: 1fr;           
   gap: 16px;
 }
 
@@ -189,7 +194,45 @@ body {
 
 /* 断点二：桌面（≥992px） */
 @media (min-width: 992px) {
-  .player-card { padding: 24px; }
   .stats-grid { grid-template-columns: repeat(4, 1fr); }
   .stat-card { padding: 28px 16px; }
+}
+
+/* 吸顶导航：滚动到阈值前正常，之后吸附 */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 锚点跳转时给吸顶导航留出高度 */
+section {
+  scroll-margin-top: 70px;
+}
+
+.player-card,
+.legend-card,
+.stat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.player-card:hover,
+.legend-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 90, 40, 0.15);
+}
+
+footer {
+  text-align: center;
+  color: #5a6b58;
+  font-size: 14px;
+  padding: 24px 16px;
+  margin-top: 32px;
+  border-top: 1px solid #dce7dc;
+}
+
+footer p { margin: 4px 0; }
+
+@media (min-width: 992px) {
+  .hero { padding: 64px 16px 48px; }
 }
